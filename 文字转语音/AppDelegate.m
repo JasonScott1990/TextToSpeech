@@ -19,10 +19,10 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
-    FirstViewController *vc = [[FirstViewController alloc] initWithNibName:@"FirstViewController" bundle:nil];
-    vc.title = @"文字转语音";
-    UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:vc];
-    self.window.rootViewController = nav;
+    FirstViewController *firstViewController = [[FirstViewController alloc] initWithNibName:@"FirstViewController" bundle:nil];
+    firstViewController.title = @"文字转语音";
+    UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:firstViewController];
+    self.window.rootViewController = navigationController;
     [self.window makeKeyAndVisible];
     
     //  不设置可能因为手机设置而听不到声音

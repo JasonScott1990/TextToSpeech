@@ -15,7 +15,7 @@
 @property (weak, nonatomic) IBOutlet UIButton *stopButton;
 @property(strong,nonatomic) AVSpeechSynthesizer *speechSynthesizer;
 @property(strong,nonatomic) AVSpeechUtterance *utterance;
-@property(strong,nonatomic) NSArray *speechTextArray;
+@property(copy,nonatomic) NSArray *speechTextArray;
 @property(strong,nonatomic) AVSpeechSynthesisVoice *voiceType;
 @property(nonatomic,strong) NSMutableArray *highlightLayers;
 @property(nonatomic,assign) BOOL isTapToRead;
