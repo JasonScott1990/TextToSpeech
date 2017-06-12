@@ -1,0 +1,525 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		8584370C1EE6424000446809 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 8584370B1EE6424000446809 /* main.m */; };
+		8584370F1EE6424000446809 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 8584370E1EE6424000446809 /* AppDelegate.m */; };
+		858437171EE6424000446809 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 858437161EE6424000446809 /* Assets.xcassets */; };
+		858437251EE6424000446809 /* _____Tests.m in Sources */ = {isa = PBXBuildFile; fileRef = 858437241EE6424000446809 /* _____Tests.m */; };
+		858437301EE6424000446809 /* _____UITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 8584372F1EE6424000446809 /* _____UITests.m */; };
+		8584373E1EE6428900446809 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8584373D1EE6428900446809 /* LaunchScreen.storyboard */; };
+		858437421EE642AB00446809 /* FirstViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 858437401EE642AB00446809 /* FirstViewController.m */; };
+		858437431EE642AB00446809 /* FirstViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 858437411EE642AB00446809 /* FirstViewController.xib */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		858437211EE6424000446809 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 858436FF1EE6424000446809 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 858437061EE6424000446809;
+			remoteInfo = "文字转语音";
+		};
+		8584372C1EE6424000446809 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 858436FF1EE6424000446809 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 858437061EE6424000446809;
+			remoteInfo = "文字转语音";
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		858437071EE6424000446809 /* 文字转语音.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "文字转语音.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		8584370B1EE6424000446809 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		8584370D1EE6424000446809 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		8584370E1EE6424000446809 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		858437161EE6424000446809 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		8584371B1EE6424000446809 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		858437201EE6424000446809 /* 文字转语音Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "文字转语音Tests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		858437241EE6424000446809 /* _____Tests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "_____Tests.m"; sourceTree = "<group>"; };
+		858437261EE6424000446809 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		8584372B1EE6424000446809 /* 文字转语音UITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "文字转语音UITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		8584372F1EE6424000446809 /* _____UITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "_____UITests.m"; sourceTree = "<group>"; };
+		858437311EE6424000446809 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		8584373D1EE6428900446809 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
+		8584373F1EE642AB00446809 /* FirstViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FirstViewController.h; sourceTree = "<group>"; };
+		858437401EE642AB00446809 /* FirstViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FirstViewController.m; sourceTree = "<group>"; };
+		858437411EE642AB00446809 /* FirstViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FirstViewController.xib; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		858437041EE6424000446809 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		8584371D1EE6424000446809 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		858437281EE6424000446809 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		858436FE1EE6424000446809 = {
+			isa = PBXGroup;
+			children = (
+				858437091EE6424000446809 /* 文字转语音 */,
+				858437231EE6424000446809 /* 文字转语音Tests */,
+				8584372E1EE6424000446809 /* 文字转语音UITests */,
+				858437081EE6424000446809 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		858437081EE6424000446809 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				858437071EE6424000446809 /* 文字转语音.app */,
+				858437201EE6424000446809 /* 文字转语音Tests.xctest */,
+				8584372B1EE6424000446809 /* 文字转语音UITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		858437091EE6424000446809 /* 文字转语音 */ = {
+			isa = PBXGroup;
+			children = (
+				8584370D1EE6424000446809 /* AppDelegate.h */,
+				8584370E1EE6424000446809 /* AppDelegate.m */,
+				8584373F1EE642AB00446809 /* FirstViewController.h */,
+				858437401EE642AB00446809 /* FirstViewController.m */,
+				858437411EE642AB00446809 /* FirstViewController.xib */,
+				858437161EE6424000446809 /* Assets.xcassets */,
+				8584373D1EE6428900446809 /* LaunchScreen.storyboard */,
+				8584371B1EE6424000446809 /* Info.plist */,
+				8584370A1EE6424000446809 /* Supporting Files */,
+			);
+			path = "文字转语音";
+			sourceTree = "<group>";
+		};
+		8584370A1EE6424000446809 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				8584370B1EE6424000446809 /* main.m */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		858437231EE6424000446809 /* 文字转语音Tests */ = {
+			isa = PBXGroup;
+			children = (
+				858437241EE6424000446809 /* _____Tests.m */,
+				858437261EE6424000446809 /* Info.plist */,
+			);
+			path = "文字转语音Tests";
+			sourceTree = "<group>";
+		};
+		8584372E1EE6424000446809 /* 文字转语音UITests */ = {
+			isa = PBXGroup;
+			children = (
+				8584372F1EE6424000446809 /* _____UITests.m */,
+				858437311EE6424000446809 /* Info.plist */,
+			);
+			path = "文字转语音UITests";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		858437061EE6424000446809 /* 文字转语音 */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 858437341EE6424000446809 /* Build configuration list for PBXNativeTarget "文字转语音" */;
+			buildPhases = (
+				858437031EE6424000446809 /* Sources */,
+				858437041EE6424000446809 /* Frameworks */,
+				858437051EE6424000446809 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "文字转语音";
+			productName = "文字转语音";
+			productReference = 858437071EE6424000446809 /* 文字转语音.app */;
+			productType = "com.apple.product-type.application";
+		};
+		8584371F1EE6424000446809 /* 文字转语音Tests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 858437371EE6424000446809 /* Build configuration list for PBXNativeTarget "文字转语音Tests" */;
+			buildPhases = (
+				8584371C1EE6424000446809 /* Sources */,
+				8584371D1EE6424000446809 /* Frameworks */,
+				8584371E1EE6424000446809 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				858437221EE6424000446809 /* PBXTargetDependency */,
+			);
+			name = "文字转语音Tests";
+			productName = "文字转语音Tests";
+			productReference = 858437201EE6424000446809 /* 文字转语音Tests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		8584372A1EE6424000446809 /* 文字转语音UITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 8584373A1EE6424000446809 /* Build configuration list for PBXNativeTarget "文字转语音UITests" */;
+			buildPhases = (
+				858437271EE6424000446809 /* Sources */,
+				858437281EE6424000446809 /* Frameworks */,
+				858437291EE6424000446809 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				8584372D1EE6424000446809 /* PBXTargetDependency */,
+			);
+			name = "文字转语音UITests";
+			productName = "文字转语音UITests";
+			productReference = 8584372B1EE6424000446809 /* 文字转语音UITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		858436FF1EE6424000446809 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0830;
+				ORGANIZATIONNAME = HuangXunhui;
+				TargetAttributes = {
+					858437061EE6424000446809 = {
+						CreatedOnToolsVersion = 8.3.1;
+						DevelopmentTeam = FF2866ZYE4;
+						ProvisioningStyle = Automatic;
+					};
+					8584371F1EE6424000446809 = {
+						CreatedOnToolsVersion = 8.3.1;
+						DevelopmentTeam = FF2866ZYE4;
+						ProvisioningStyle = Automatic;
+						TestTargetID = 858437061EE6424000446809;
+					};
+					8584372A1EE6424000446809 = {
+						CreatedOnToolsVersion = 8.3.1;
+						DevelopmentTeam = FF2866ZYE4;
+						ProvisioningStyle = Automatic;
+						TestTargetID = 858437061EE6424000446809;
+					};
+				};
+			};
+			buildConfigurationList = 858437021EE6424000446809 /* Build configuration list for PBXProject "文字转语音" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 858436FE1EE6424000446809;
+			productRefGroup = 858437081EE6424000446809 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				858437061EE6424000446809 /* 文字转语音 */,
+				8584371F1EE6424000446809 /* 文字转语音Tests */,
+				8584372A1EE6424000446809 /* 文字转语音UITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		858437051EE6424000446809 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				858437171EE6424000446809 /* Assets.xcassets in Resources */,
+				858437431EE642AB00446809 /* FirstViewController.xib in Resources */,
+				8584373E1EE6428900446809 /* LaunchScreen.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		8584371E1EE6424000446809 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		858437291EE6424000446809 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		858437031EE6424000446809 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8584370F1EE6424000446809 /* AppDelegate.m in Sources */,
+				858437421EE642AB00446809 /* FirstViewController.m in Sources */,
+				8584370C1EE6424000446809 /* main.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		8584371C1EE6424000446809 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				858437251EE6424000446809 /* _____Tests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		858437271EE6424000446809 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				858437301EE6424000446809 /* _____UITests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		858437221EE6424000446809 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 858437061EE6424000446809 /* 文字转语音 */;
+			targetProxy = 858437211EE6424000446809 /* PBXContainerItemProxy */;
+		};
+		8584372D1EE6424000446809 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 858437061EE6424000446809 /* 文字转语音 */;
+			targetProxy = 8584372C1EE6424000446809 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		858437321EE6424000446809 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		858437331EE6424000446809 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		858437351EE6424000446809 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = FF2866ZYE4;
+				INFOPLIST_FILE = "文字转语音/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.COMPANY.-----";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		858437361EE6424000446809 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = FF2866ZYE4;
+				INFOPLIST_FILE = "文字转语音/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.COMPANY.-----";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+		858437381EE6424000446809 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				DEVELOPMENT_TEAM = FF2866ZYE4;
+				INFOPLIST_FILE = "文字转语音Tests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.COMPANY.-----Tests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/文字转语音.app/文字转语音";
+			};
+			name = Debug;
+		};
+		858437391EE6424000446809 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				DEVELOPMENT_TEAM = FF2866ZYE4;
+				INFOPLIST_FILE = "文字转语音Tests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.COMPANY.-----Tests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/文字转语音.app/文字转语音";
+			};
+			name = Release;
+		};
+		8584373B1EE6424000446809 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				DEVELOPMENT_TEAM = FF2866ZYE4;
+				INFOPLIST_FILE = "文字转语音UITests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.COMPANY.-----UITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_TARGET_NAME = "文字转语音";
+			};
+			name = Debug;
+		};
+		8584373C1EE6424000446809 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				DEVELOPMENT_TEAM = FF2866ZYE4;
+				INFOPLIST_FILE = "文字转语音UITests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.COMPANY.-----UITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_TARGET_NAME = "文字转语音";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		858437021EE6424000446809 /* Build configuration list for PBXProject "文字转语音" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				858437321EE6424000446809 /* Debug */,
+				858437331EE6424000446809 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		858437341EE6424000446809 /* Build configuration list for PBXNativeTarget "文字转语音" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				858437351EE6424000446809 /* Debug */,
+				858437361EE6424000446809 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		858437371EE6424000446809 /* Build configuration list for PBXNativeTarget "文字转语音Tests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				858437381EE6424000446809 /* Debug */,
+				858437391EE6424000446809 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		8584373A1EE6424000446809 /* Build configuration list for PBXNativeTarget "文字转语音UITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				8584373B1EE6424000446809 /* Debug */,
+				8584373C1EE6424000446809 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 858436FF1EE6424000446809 /* Project object */;
+}
