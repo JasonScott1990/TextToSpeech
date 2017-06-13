@@ -58,58 +58,45 @@
         [[AVAudioSession sharedInstance] overrideOutputAudioPort:AVAudioSessionPortOverrideSpeaker error:nil];
     }
     
-    //单击手势：获取tap手势下textview的当前sentence
+    //单击/拖动手势：获取手势下textview的当前sentence
     [_textView addGestureRecognizer:[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(getPressedWordWithRecognizer:)]];
+    [_textView addGestureRecognizer:[[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(getPressedWordWithRecognizer:)]];
 }
 
 #pragma mark - 获取tap手势下textview的当前sentence
 - (NSString*)getPressedWordWithRecognizer:(UIGestureRecognizer*)recognizer
 {
-    //    //get view
-    //    UITextView *textView = (UITextView *)recognizer.view;
-    //    //get location
-    //    CGPoint location = [recognizer locationInView:textView];
-    //    UITextPosition *tapPosition = [textView closestPositionToPoint:location];
-    //    UITextRange *textRange = [textView.tokenizer rangeEnclosingPosition:tapPosition withGranularity:UITextGranularityWord inDirection:UITextLayoutDirectionRight];
-    //
-    //    NSString *tapString = [textView textInRange:textRange];
-    //    NSLog(@"%@",tapString);
-    //    //return string
-    //    return tapString;
     _isTapToRead = YES;
     UITextView *textView_New = (UITextView *)recognizer.view;
     CGPoint pos = [recognizer locationInView:textView_New];
-    //    NSLog(@"Tap Gesture Coordinates: %.2f %.2f", pos.x, pos.y);
     UITextPosition *tapPos = [textView_New closestPositionToPoint:pos];
     UITextRange * wr = [textView_New.tokenizer rangeEnclosingPosition:tapPos withGranularity:UITextGranularitySentence inDirection:UITextLayoutDirectionRight];
     NSString *selectedText = [textView_New textInRange:wr];
-    //    NSLog(@"selectedText: %@", selectedText);
-    AVSpeechUtterance *utterance = [[AVSpeechUtterance alloc]initWithString:selectedText];
-    if (self.speechSynthesizer.isSpeaking && [textView_New.text containsString:selectedText]) {
-        [self.speechSynthesizer stopSpeakingAtBoundary:AVSpeechBoundaryImmediate];
+    //拖动手势也有状态
+    if(recognizer.state == UIGestureRecognizerStateBegan){
+        NSLog(@"开始拖动");
+    }else if(recognizer.state == UIGestureRecognizerStateChanged){
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [self drawLayerForTextHighlightWithString:selectedText];
+        });
+    }else if(recognizer.state == UIGestureRecognizerStateEnded){
+        //结束拖动
+        NSLog(@"结束拖动");
+        AVSpeechUtterance *utterance = [[AVSpeechUtterance alloc]initWithString:selectedText];
+        if (self.speechSynthesizer.isSpeaking && [textView_New.text containsString:selectedText]) {
+            [self.speechSynthesizer stopSpeakingAtBoundary:AVSpeechBoundaryImmediate];
+            _isTapToRead = YES;
+        }
+        utterance.volume = 1;
+        utterance.pitchMultiplier = 0.8;//音调
+        utterance.voice = _voiceType;//语言
+        utterance.rate = 0.5;//说话速率
+        [_speechSynthesizer speakUtterance:utterance];
         _isTapToRead = YES;
+        return selectedText;
     }
-    utterance.volume = 1;
-    utterance.pitchMultiplier = 0.8;//音调
-    utterance.voice = _voiceType;//语言
-    utterance.rate = 0.5;//说话速率
-    [_speechSynthesizer speakUtterance:utterance];
-    _isTapToRead = YES;
-    return selectedText;
+    return nil;
 }
-
-//// 开始移动
-//- (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
-//    NSLog(@"开始移动");
-//}
-//// 正在移动
-//- (void)touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event {
-//    NSLog(@"正在移动");
-//}
-//// 移动结束
-//- (void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event {
-//    NSLog(@"移动结束");
-//}
 
 #pragma mark - 耳机拔插通知方法的实现
 - (void)audioRouteChangeListenerCallback:(NSNotification*)notification
