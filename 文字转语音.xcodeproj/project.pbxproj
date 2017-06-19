@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8544B6921EF7B4F700171B1B /* MyTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8544B6911EF7B4F700171B1B /* MyTextView.m */; };
 		8584370C1EE6424000446809 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 8584370B1EE6424000446809 /* main.m */; };
 		8584370F1EE6424000446809 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 8584370E1EE6424000446809 /* AppDelegate.m */; };
 		858437171EE6424000446809 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 858437161EE6424000446809 /* Assets.xcassets */; };
@@ -35,6 +36,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		8544B6901EF7B4F700171B1B /* MyTextView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyTextView.h; sourceTree = "<group>"; };
+		8544B6911EF7B4F700171B1B /* MyTextView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyTextView.m; sourceTree = "<group>"; };
 		858437071EE6424000446809 /* 文字转语音.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "文字转语音.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		8584370B1EE6424000446809 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		8584370D1EE6424000446809 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -103,6 +106,8 @@
 			children = (
 				8584370D1EE6424000446809 /* AppDelegate.h */,
 				8584370E1EE6424000446809 /* AppDelegate.m */,
+				8544B6901EF7B4F700171B1B /* MyTextView.h */,
+				8544B6911EF7B4F700171B1B /* MyTextView.m */,
 				8584373F1EE642AB00446809 /* FirstViewController.h */,
 				858437401EE642AB00446809 /* FirstViewController.m */,
 				858437411EE642AB00446809 /* FirstViewController.xib */,
@@ -277,6 +282,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				8584370F1EE6424000446809 /* AppDelegate.m in Sources */,
+				8544B6921EF7B4F700171B1B /* MyTextView.m in Sources */,
 				858437421EE642AB00446809 /* FirstViewController.m in Sources */,
 				8584370C1EE6424000446809 /* main.m in Sources */,
 			);

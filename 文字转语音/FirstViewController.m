@@ -8,28 +8,39 @@
 
 #import "FirstViewController.h"
 #import <AVFoundation/AVFoundation.h>
+#import "MyTextView.h"
 
 @interface FirstViewController ()<AVSpeechSynthesizerDelegate>
-@property (weak, nonatomic) IBOutlet UITextView *textView;
-@property (weak, nonatomic) IBOutlet UIButton *readTextButton;
-@property (weak, nonatomic) IBOutlet UIButton *stopButton;
-@property(strong,nonatomic) AVSpeechSynthesizer *speechSynthesizer;
-@property(strong,nonatomic) AVSpeechUtterance *utterance;
-@property(copy,nonatomic) NSArray *speechTextArray;
-@property(strong,nonatomic) AVSpeechSynthesisVoice *voiceType;
-@property(nonatomic,strong) NSMutableArray *highlightLayers;
-@property(nonatomic,assign) BOOL isTapToRead;
+@property (nonatomic,weak) MyTextView *textView;
+@property (nonatomic,weak) IBOutlet UIButton *readTextButton;
+@property (nonatomic,weak) IBOutlet UIButton *stopButton;
+@property (nonatomic,strong) AVSpeechSynthesizer *speechSynthesizer;
+@property (nonatomic,strong) AVSpeechUtterance *utterance;
+@property (nonatomic,strong) AVSpeechSynthesisVoice *voiceType;
+@property (nonatomic,copy) NSString *longPressSelectedStr;
+@property (nonatomic,copy) NSArray *speechTextArray;
+@property (nonatomic,strong) NSMutableArray *highlightLayers;
+@property (nonatomic,assign) BOOL isTapToRead;
 @end
 
 @implementation FirstViewController
+
+- (void)setBtnProperty:(UIButton *)button {
+    button.layer.borderWidth = 1;
+    button.layer.borderColor = [UIColor redColor].CGColor;
+    [button setTitleColor:[UIColor redColor] forState:UIControlStateNormal];
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.highlightLayers = [NSMutableArray array];
     self.automaticallyAdjustsScrollViewInsets = NO;
     
-    _textView.layer.borderWidth = 1;
-    _textView.layer.borderColor = [UIColor grayColor].CGColor;
+    MyTextView *textView = [[MyTextView alloc] initWithFrame:CGRectMake(16, 80, [[UIScreen mainScreen] bounds].size.width-16*2, 400)];
+    textView.layer.borderWidth = 1;
+    textView.layer.borderColor = [UIColor grayColor].CGColor;
+    _textView = textView;
+    [self.view addSubview:_textView];
     
     [self setBtnProperty:_readTextButton];
     [self setBtnProperty:_stopButton];
@@ -46,7 +57,8 @@
     
     [[AVAudioSession sharedInstance] setActive:YES error:nil];//创建单例对象并且使其设置为活跃状态.
     
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(audioRouteChangeListenerCallback:)   name:AVAudioSessionRouteChangeNotification object:nil];//设置通知
+    //设置通知
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(audioRouteChangeListenerCallback:)   name:AVAudioSessionRouteChangeNotification object:nil];
     [self setproximity];
     
     if ([self isHeadsetPluggedIn]) {
@@ -58,20 +70,43 @@
         [[AVAudioSession sharedInstance] overrideOutputAudioPort:AVAudioSessionPortOverrideSpeaker error:nil];
     }
     
+    __weak FirstViewController *weakSelf = self;
+    self.textView.block = ^(NSString *selectedText) {
+        weakSelf.longPressSelectedStr = selectedText;
+        [weakSelf speakUtteranceWithString:selectedText];
+    };
+    
+    [self addGesture];
+}
+
+- (void)speakUtteranceWithString:(NSString *)string {
+    AVSpeechUtterance *utterance = [[AVSpeechUtterance alloc]initWithString:string];
+    utterance.volume = 1;
+    utterance.pitchMultiplier = 0.8;//音调
+    utterance.voice = _voiceType;//语言
+    utterance.rate = 0.5;//说话速率
+    [_speechSynthesizer speakUtterance:utterance];
+}
+
+- (void)addGesture {
     //单击/拖动手势：获取手势下textview的当前sentence
     [_textView addGestureRecognizer:[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(getPressedWordWithRecognizer:)]];
     [_textView addGestureRecognizer:[[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(getPressedWordWithRecognizer:)]];
+}
+
+- (void)didReceiveMemoryWarning {
+    [super didReceiveMemoryWarning];
+    // Dispose of any resources that can be recreated.
 }
 
 #pragma mark - 获取tap手势下textview的当前sentence
 - (NSString*)getPressedWordWithRecognizer:(UIGestureRecognizer*)recognizer
 {
     _isTapToRead = YES;
-    UITextView *textView_New = (UITextView *)recognizer.view;
-    CGPoint pos = [recognizer locationInView:textView_New];
-    UITextPosition *tapPos = [textView_New closestPositionToPoint:pos];
-    UITextRange * wr = [textView_New.tokenizer rangeEnclosingPosition:tapPos withGranularity:UITextGranularitySentence inDirection:UITextLayoutDirectionRight];
-    NSString *selectedText = [textView_New textInRange:wr];
+    CGPoint pos = [recognizer locationInView:_textView];
+    UITextPosition *tapPos = [_textView closestPositionToPoint:pos];
+    UITextRange * wr = [_textView.tokenizer rangeEnclosingPosition:tapPos withGranularity:UITextGranularitySentence inDirection:UITextLayoutDirectionRight];
+    NSString *selectedText = [_textView textInRange:wr];
     //拖动手势也有状态
     if(recognizer.state == UIGestureRecognizerStateBegan){
         NSLog(@"开始拖动");
@@ -82,16 +117,11 @@
     }else if(recognizer.state == UIGestureRecognizerStateEnded){
         //结束拖动
         NSLog(@"结束拖动");
-        AVSpeechUtterance *utterance = [[AVSpeechUtterance alloc]initWithString:selectedText];
-        if (self.speechSynthesizer.isSpeaking && [textView_New.text containsString:selectedText]) {
+        if (self.speechSynthesizer.isSpeaking && [_textView.text containsString:selectedText]) {
             [self.speechSynthesizer stopSpeakingAtBoundary:AVSpeechBoundaryImmediate];
             _isTapToRead = YES;
         }
-        utterance.volume = 1;
-        utterance.pitchMultiplier = 0.8;//音调
-        utterance.voice = _voiceType;//语言
-        utterance.rate = 0.5;//说话速率
-        [_speechSynthesizer speakUtterance:utterance];
+        [self speakUtteranceWithString:selectedText];
         _isTapToRead = YES;
         return selectedText;
     }
@@ -121,12 +151,7 @@
 #pragma mark - 语音转文本核心方法
 - (void)beginConversation {
     for (int i = 0; i < self.speechTextArray.count; i++) {
-        AVSpeechUtterance *utterance = [[AVSpeechUtterance alloc]initWithString:self.speechTextArray[i]];
-        utterance.volume = 1;
-        utterance.pitchMultiplier = 0.8;//音调
-        utterance.voice = _voiceType;//语言
-        utterance.rate = 0.5;//说话速率
-        [_speechSynthesizer speakUtterance:utterance];
+        [self speakUtteranceWithString:self.speechTextArray[i]];
     }
     _isTapToRead = NO;
 }
@@ -139,17 +164,6 @@
             return YES;
     }
     return NO;
-}
-
-- (void)setBtnProperty:(UIButton *)button {
-    button.layer.borderWidth = 1;
-    button.layer.borderColor = [UIColor redColor].CGColor;
-    [button setTitleColor:[UIColor redColor] forState:UIControlStateNormal];
-}
-
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
 }
 
 #pragma mark - Custom Actions
@@ -167,27 +181,27 @@
 }
 
 - (IBAction)stopReadText:(id)sender {
+    [self.view endEditing:YES];
     [self.speechSynthesizer stopSpeakingAtBoundary:AVSpeechBoundaryImmediate];
     [_readTextButton setTitle:@"开始" forState:UIControlStateNormal];
 }
 
 #pragma mark - 阅读时文本高亮核心方法
 - (void)drawLayerForTextHighlightWithString:(NSString*)string {
-    
-    for (CALayer* eachLayer in [self highlightLayers]) {
+    [self.view endEditing:YES];
+    for (CALayer* eachLayer in self.highlightLayers) {
         [eachLayer removeFromSuperlayer];
     }
     
-    NSLayoutManager* manager = [[self textView]layoutManager];
+    NSLayoutManager* manager = self.textView.layoutManager;
     if ([string hasPrefix:@"\n\t"]) {
-       string = [string stringByReplacingOccurrencesOfString:@"\n\t" withString:@""];
+        string = [string stringByReplacingOccurrencesOfString:@"\n\t" withString:@""];
     }
     if ([string hasPrefix:@"\t"]) {
-      string =  [string stringByReplacingOccurrencesOfString:@"\t" withString:@""];
+        string =  [string stringByReplacingOccurrencesOfString:@"\t" withString:@""];
     }
     // Find the string
-    NSRange match = [[[self textView]text]rangeOfString:string options:
-                     NSCaseInsensitiveSearch | NSDiacriticInsensitiveSearch | NSWidthInsensitiveSearch];
+    NSRange match = [self.textView.text rangeOfString:string options:NSCaseInsensitiveSearch | NSDiacriticInsensitiveSearch | NSWidthInsensitiveSearch];
     
     // Convert it to a glyph range
     NSRange matchingGlyphRange = [manager glyphRangeForCharacterRange:match actualCharacterRange:NULL];
@@ -203,7 +217,7 @@
          __block CGRect finalLineRect = CGRectZero;
          
          // Here we use enumerateSubstringsInRange:... to go through each glyph and build the final rect for the line
-         [[[self textView]text]enumerateSubstringsInRange:currentRange options:NSStringEnumerationByComposedCharacterSequences usingBlock:
+         [self.textView.text enumerateSubstringsInRange:currentRange options:NSStringEnumerationByComposedCharacterSequences usingBlock:
           ^(NSString* substring, NSRange substringRange, NSRange enclostingRange, BOOL* stop) {
               
               // The range of the single glyph being enumerated
@@ -222,7 +236,7 @@
           }];
          
          // once we get the rect for the line, draw the layer
-         UIEdgeInsets textContainerInset = [[self textView]textContainerInset];
+         UIEdgeInsets textContainerInset = self.textView.textContainerInset;
          finalLineRect.origin.x += textContainerInset.left;
          finalLineRect.origin.y += textContainerInset.top;
          
@@ -240,16 +254,17 @@
          //         [roundRect setShadowOpacity:1.0f];
          //         [roundRect setShadowRadius:10.0f];
          
-         [[[self textView]layer]addSublayer:roundRect];
-         [[self highlightLayers]addObject:roundRect];
+         [self.textView.layer addSublayer:roundRect];
+         [self.highlightLayers addObject:roundRect];
          
      }];
+
 }
 
 #pragma mark - AVSpeechSynthesizerDelegate
 - (void)speechSynthesizer:(AVSpeechSynthesizer *)synthesizer didStartSpeechUtterance:(AVSpeechUtterance *)utterance {
-        [self drawLayerForTextHighlightWithString:utterance.speechString];
-        [_readTextButton setTitle:@"暂停" forState:UIControlStateNormal];
+    [self drawLayerForTextHighlightWithString:utterance.speechString];
+    [_readTextButton setTitle:@"暂停" forState:UIControlStateNormal];
 }
 
 - (void)speechSynthesizer:(AVSpeechSynthesizer *)synthesizer didPauseSpeechUtterance:(AVSpeechUtterance *)utterance {
@@ -261,12 +276,13 @@
 }
 
 - (void)speechSynthesizer:(AVSpeechSynthesizer *)synthesizer didFinishSpeechUtterance:(AVSpeechUtterance *)utterance {
-    if (_isTapToRead == YES || ([utterance.speechString isEqualToString:_speechTextArray.lastObject] && _isTapToRead == NO)) {
+    if (_isTapToRead == YES || [utterance.speechString isEqualToString: self.longPressSelectedStr] || ([utterance.speechString isEqualToString:_speechTextArray.lastObject] && _isTapToRead == NO)) {
         [_readTextButton setTitle:@"开始" forState:UIControlStateNormal];
     }
     for (CALayer* eachLayer in [self highlightLayers]) {
         [eachLayer removeFromSuperlayer];
     }
+    [self addGesture];
 }
 
 - (void)speechSynthesizer:(AVSpeechSynthesizer *)synthesizer didCancelSpeechUtterance:(AVSpeechUtterance *)utterance {
